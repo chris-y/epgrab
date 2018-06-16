@@ -48,7 +48,7 @@ const char *id = "@(#) $Id: tv_grab_dvb.c 86 2010-10-29 20:27:31Z pmhahn $";
 #include "tv_grab_dvb.h"
 
 /* FIXME: put these as options */
-#define CHANNELS_CONF "channels.conf"
+#define CHANNELS_CONF "/home/pi/.tzap/channels.conf"
 #define CHANIDENTS    "chanidents"
 
 static char *ProgName;
@@ -228,7 +228,7 @@ static void parseEventDescription(void *data, enum ER round) {
     assert(evtlen < sizeof(evt));
     memcpy(evt, (char *)&evtdesc->data, evtlen);
     evt[evtlen] = '\0';
-    printf("\t<title lang=\"%s\">%s</title>\n", xmllang(&evtdesc->lang_code1), xmlify(evt, evtlen));
+    printf("%s\n", xmlify(evt, evtlen));
     return;
   }
 
@@ -241,7 +241,7 @@ static void parseEventDescription(void *data, enum ER round) {
     if (*dsc) {
       char *d = xmlify(dsc, dsclen);
       if (d && *d)
-        printf("\t<sub-title lang=\"%s\">%s</sub-title>\n", xmllang(&evtdesc->lang_code1), d);
+        printf("%s\n", d);
     }
   }
 } /*}}}*/
@@ -253,8 +253,8 @@ void parseLongEventDescription(void *data) {
   char dsc[256];
   bool non_empty = (levt->descriptor_number || levt->last_descriptor_number || levt->length_of_items || levt->data[0]);
 
-  if (non_empty && levt->descriptor_number == 0)
-    printf("\t<desc lang=\"%s\">", xmllang(&levt->lang_code1));
+//  if (non_empty && levt->descriptor_number == 0)
+//    printf("\t<desc lang=\"%s\">", xmllang(&levt->lang_code1));
 
   void *p = &levt->data;
   void *data_end = data + DESCR_GEN_LEN + GetDescriptorLength(data);
@@ -290,7 +290,7 @@ void parseLongEventDescription(void *data) {
 
   //printf("/%d/%d/%s", levt->descriptor_number, levt->last_descriptor_number, xmlify(dsc));
   if (non_empty && levt->descriptor_number == levt->last_descriptor_number)
-    printf("</desc>\n");
+    printf("\n\n");
 } /*}}}*/
 
 /* Parse 0x50 Component Descriptor.  {{{
@@ -314,24 +314,24 @@ static void parseComponentDescription(void *data, enum CR round, int *seen) {
       if (round == VIDEO && !*seen) {
         //if ((dc->component_type-1)&0x08) //HD TV
         //if ((dc->component_type-1)&0x04) //30Hz else 25
-        printf("\t<video>\n");
-        printf("\t\t<aspect>%s</aspect>\n", lookup(aspect_table, (dc->component_type-1) & 0x03));
-        printf("\t</video>\n");
+//        printf("\t<video>\n");
+//        printf("\t\t<aspect>%s</aspect>\n", lookup(aspect_table, (dc->component_type-1) & 0x03));
+//        printf("\t</video>\n");
         (*seen)++;
       }
       break;
     case 0x02: // Audio Info
       if (round == AUDIO && !*seen) {
-        printf("\t<audio>\n");
-        printf("\t\t<stereo>%s</stereo>\n", lookup(audio_table, (dc->component_type)));
-        printf("\t</audio>\n");
+//        printf("\t<audio>\n");
+//        printf("\t\t<stereo>%s</stereo>\n", lookup(audio_table, (dc->component_type)));
+//        printf("\t</audio>\n");
         (*seen)++;
       }
       if (round == LANGUAGE) {
-        if (!*seen)
-          printf("\t<language>%s</language>\n", xmllang(&dc->lang_code1));
-        else
-          printf("\t<!--language>%s</language-->\n", xmllang(&dc->lang_code1));
+//        if (!*seen)
+//          printf("\t<language>%s</language>\n", xmllang(&dc->lang_code1));
+//        else
+//          printf("\t<!--language>%s</language-->\n", xmllang(&dc->lang_code1));
         (*seen)++;
       }
       break;
@@ -340,9 +340,9 @@ static void parseComponentDescription(void *data, enum CR round, int *seen) {
         // FIXME: is there a suitable XMLTV output for this?
         // if ((dc->component_type)&0x10) //subtitles
         // if ((dc->component_type)&0x20) //subtitles for hard of hearing
-        printf("\t<subtitles type=\"teletext\">\n");
-        printf("\t\t<language>%s</language>\n", xmllang(&dc->lang_code1));
-        printf("\t</subtitles>\n");
+//        printf("\t<subtitles type=\"teletext\">\n");
+//        printf("\t\t<language>%s</language>\n", xmllang(&dc->lang_code1));
+//        printf("\t</subtitles>\n");
       }
       break;
       // case 0x04: // AC3 info
@@ -391,9 +391,9 @@ static void parseContentDescription(void *data) {
           printf("\t<category>%s</category>\n", c);
 #ifdef CATEGORY_UNKNOWN
         else
-          printf("\t<!--category>%s %02X %02X</category-->\n", c+1, c1, c2);
+//          printf("\t<!--category>%s %02X %02X</category-->\n", c+1, c1, c2);
       else
-        printf("\t<!--category>%02X %02X</category-->\n", c1, c2);
+//        printf("\t<!--category>%02X %02X</category-->\n", c1, c2);
 #endif
     }
     // This is weird in the uk, they use user but not content, and almost the same values
@@ -411,9 +411,9 @@ void parseRatingDescription(void *data) {
       case 0x00: /*undefined*/
         break;
       case 0x01 ... 0x0F:
-        printf("\t<rating system=\"dvb\">\n");
-        printf("\t\t<value>%d</value>\n", pr->rating + 3);
-        printf("\t</rating>\n");
+//        printf("\t<rating system=\"dvb\">\n");
+//        printf("\t\t<value>%d</value>\n", pr->rating + 3);
+//        printf("\t</rating>\n");
         break;
       case 0x10 ... 0xFF: /*broadcaster defined*/
         break;
@@ -459,7 +459,7 @@ void parseContentIdentifierDescription(void *data) {
         memcpy(buf, (char *)&crid_data->crid_byte, cridlen);
         buf[cridlen] = '\0';
 
-        printf("\t<crid type='%s'>%s</crid>\n", type, xmlify(buf, cridlen));
+//        printf("\t<crid type='%s'>%s</crid>\n", type, xmlify(buf, cridlen));
         crid_length = 2 + crid_data->crid_length;
         break;
       case 0x01: /* Carried in Content Identifier Table (CIT) */
@@ -549,9 +549,9 @@ static void parseDescription(void *data, size_t len) {
           if (round == 5)
             parseContentIdentifierDescription(desc);
           break;
-        default:
-          if (round == 0)
-            printf("\t<!--Unknown_Please_Report ID=\"%x\" Len=\"%d\" -->\n", GetDescriptorTag(desc), GetDescriptorLength(desc));
+//        default:
+//          if (round == 0)
+            //printf("\t<!--Unknown_Please_Report ID=\"%x\" Len=\"%d\" -->\n", GetDescriptorTag(desc), GetDescriptorLength(desc));
       }
     }
   }
@@ -663,18 +663,17 @@ static void parseEIT(void *data, size_t len) {
 
     programme_count++;
 
-    printf("<programme channel=\"%s\" ", get_channelident(HILO(e->service_id)));
-    strftime(date_strbuf, sizeof(date_strbuf), "start=\"%Y%m%d%H%M%S %z\"", localtime(&start_time) );
-    printf("%s ", date_strbuf);
-    strftime(date_strbuf, sizeof(date_strbuf), "stop=\"%Y%m%d%H%M%S %z\"", localtime(&stop_time));
-    printf("%s>\n ", date_strbuf);
+    printf("\n"); //, get_channelident(HILO(e->service_id)));
+//    strftime(date_strbuf, sizeof(date_strbuf), "start=\"%Y%m%d%H%M%S %z\"", localtime(&start_time) );
+//    printf("%s ", date_strbuf);
+//    strftime(date_strbuf, sizeof(date_strbuf), "stop=\"%Y%m%d%H%M%S %z\"", localtime(&stop_time));
+//    printf("%s>\n ", date_strbuf);
 
     //printf("\t<EventID>%i</EventID>\n", HILO(evt->event_id));
     //printf("\t<RunningStatus>%i</RunningStatus>\n", evt->running_status);
     //1 Airing, 2 Starts in a few seconds, 3 Pausing, 4 About to air
 
     parseDescription(&evt->data, GetEITDescriptorsLoopLength(evt));
-    printf("</programme>\n");
   }
 } /*}}}*/
 
@@ -682,7 +681,6 @@ static void parseEIT(void *data, size_t len) {
 static void finish_up() {
   if (!silent)
     fprintf(stderr, "\n");
-  printf("</tv>\n");
   exit(0);
 } /*}}}*/
 
@@ -823,9 +821,7 @@ static void readZapInfo() {
     if (id && *id) {
       int chanid = atoi(id);
       if (chanid) { 
-        printf("<channel id=\"%s\">\n", get_channelident(chanid));
-        printf("\t<display-name>%s</display-name>\n", xmlify(buf, sizeof(c)));
-        printf("</channel>\n");
+        printf("%s - %s\n", get_channelident(chanid), xmlify(buf, sizeof(c)));
       }
     }
   }
@@ -849,9 +845,6 @@ int main(int argc, char **argv) {
   if (!silent)
     fprintf(stderr, "\n");
 
-  printf("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
-  printf("<!DOCTYPE tv SYSTEM \"xmltv.dtd\">\n");
-  printf("<tv generator-info-name=\"dvb-epg-gen\">\n");
   if (openInput() != 0) {
     fprintf(stderr, "Unable to get event data from multiplex.\n");
     exit(1);
