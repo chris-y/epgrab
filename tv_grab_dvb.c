@@ -663,9 +663,9 @@ static void parseEIT(void *data, size_t len) {
 
     programme_count++;
 
-    printf("\n"); //, get_channelident(HILO(e->service_id)));
-//    strftime(date_strbuf, sizeof(date_strbuf), "start=\"%Y%m%d%H%M%S %z\"", localtime(&start_time) );
-//    printf("%s ", date_strbuf);
+    printf("%s\n", get_channelident(HILO(e->service_id)));
+    strftime(date_strbuf, sizeof(date_strbuf), "%Y%m%d%H%M%S %z", localtime(&start_time) );
+    printf("%s ", date_strbuf);
 //    strftime(date_strbuf, sizeof(date_strbuf), "stop=\"%Y%m%d%H%M%S %z\"", localtime(&stop_time));
 //    printf("%s>\n ", date_strbuf);
 

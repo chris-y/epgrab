@@ -1,146 +1,172 @@
-8	start.premiere.de
-9	4.premiere.de
-10	1.premiere.de
-11	2.premiere.de
-12	animalplanet.discoveryeurope.com
-13	history.discovery.com
-14	discoveryeurope.com
-16	serie.premiere.de
-17	premspo.premiere.de
-18	direkt.premiere.de
-19	junior.tv
-20	filmfest.premiere.de
-21	beate-uhse.tv
-22	heimatkanal.de
-23	krimi.premiere.de
-24	classica.de
-28	jetixtv.de
-34	disney.com
-36	scifi.premiere.de
-41	classics.premiere.de
-42	13thstreet.nbc.com
-43	3.premiere.de
-129	premiere.de#hd
-130	discovery.com#hd
-515	mgm.tv
-516	nostalgie.premiere.de
-900	dsf.com
-616	sailingchannel.skytv.it
-617	espnclassicsport.com
-618	extreme.com
-1300	www.raiuno.rai.it
-1350	www.raiduo.rai.it
-1400	www.raitre.rai.it
-1550	trt.net.tr
-2600	euronews.net#Italy
-2650	euronews.net#Spain
-2700	euronews.net#Russia
-2710	euronews.net#Portugese
-2720	euronews.net#French
-2730	euronews.net#English
-4173	east.bbc1.bbc.co.uk
-4175	midlands.bbc1.bbc.co.uk
-4237	east.bbc2.bbc.co.uk
-4239	midlands.bbc2.bbc.co.uk
-4415	news-24.bbc.co.uk
-4671	cbbc.bbc.co.uk
-8258	anglia.tv.co.uk
-8283	yorkshire.granadatv.co.uk
-8322	itv2.itv.co.uk
-8347	itv2.itv.co.uk
-8384	channel4.com
-8454	uk-food.flextech.telewest.co.uk
-8578	itn.co.uk
-8604	itn.co.uk
-8800	price-drop.tv
-12003	rtl.de
-12020	rtl2.de
-12040	superrtl.de
-12060	vox.de
-12080	rtl-shop.de
-12090	n-tv.de
-17500	sat1.de
-17501	prosieben.de
-17502	kabel1.de
-17503	n24.de
-17504	neunlive.de
-12866	channel5.co.uk
-12886	channel5.co.uk
-13120	qvcuk.com
-14272	bid-up.tv
-14336	radio-1.bbc.co.uk
-14400	radio-2.bbc.co.uk
-14464	radio-3.bbc.co.uk
-14528	fm.radio-4.bbc.co.uk
-15040	uk.cartoonnetwork.com
-15168	discoveryeurope.com
-15552	uk-gold.flextech.telewest.co.uk
-16832	knowledge.bbc.co.uk
-16960	cbeebies.bbc.co.uk
-17920	radio-5.bbc.co.uk
-17984	sportsextra.radio-5.bbc.co.uk
-18048	6music.bbc.co.uk
-18112	bbc7.bbc.co.uk
-18176	1xtra.bbc.co.uk
-18240	asian-network.bbc.co.uk
-22080	sky-news.sky.com
-22144	news.sports.sky.com
-22208	travel.sky.co.uk
-22272	ukhistory.tv
-25664	the-hits.emap.com
-25728	tmf.nl
-25792	ukbrightideas.tv
-26176	kiss-tv.kiss100.com
-26240	smashhits.net
-26304	kerrang.com
-26368	jazzfm.com
-26496	world-svc.bbc.com
-26624	magictv.co.uk
-26688	q4music.com
-28006	zdf.de
-28007	3sat.de
-28008	kika.de
-28011	infokanal.zdf.de
-28012	dkultur.zdf.de
-28013	dlf.zdf.de
-28014	dokukanal.zdf.de
-28016	theater.zdf.de
-28017	dok_deb.zdf.de
-28106	ard.de
-28107	3.br-online.de
-28108	hr-online.de
-28109	arte-tv.de
-28111	wdr.de
-28112	alpha.br-online.de
-28113	swr.de
-28114	phoenix.de
-28130	test-r.ard.de
-28201	einsextra.ard.de
-28202	einsfestival.ard.de
-28203	einsplus.ard.de
-28204	mdr.de
-28205	rbb-online.de#brandenburg
-28206	rbb-online.de#berlin
-28207	kultur.ndr.de
-28208	figaro.mdr.de
-28210	2.hr-online.de
-28211	info.mdr.de
-28212	sputnik
-28213	bayern 4 klassik
-28214	2.swr.de
-28215	3.wdr.de
-28216	5.wdr.de
-28218	ard-online-kanal
-28221	test1.ard.de
-28222	test2.ard.de
-28224	ndr.de#mv
-28225	ndr.de#hh
-28226	ndr.de#nds
-28227	ndr.de#sh
-28228	mdr.de#sachsen
-28229	mdr.de#s-anhalt
-28230	mdr.de#thueringen
-28231	swr.de#rp
-28485	radio-bremen-tv.de
-28486	sr.de
-28250	mhp-data.ard.de
+17472	BBC TWO HD
+17540	BBC ONE HD
+17603	ITV HD
+17664	Channel 4 HD
+17728	Channel 5 HD
+18112	CBBC HD
+20352	Film4+1
+4173	BBC ONE East W
+4287	BBC TWO
+4352	BBC NEWS
+4416	BBC Red Button
+4544	BBC FOUR
+4608	CBBC
+4672	CBeebies
+4736	BBC Parliament
+5632	BBC R5L
+5696	BBC R5SX
+5760	BBC 6 Music
+5824	BBC Radio 4 Ex
+5888	BBC R1X
+5952	BBC Asian Net.
+6016	BBC World Sv.
+6148	BBC Radio London
+6151	BBC Norfolk
+6157	BBC Three Counties
+6221	BBC Northampton
+6285	BBC Cambridge
+6720	BBC Radio 1
+6784	BBC Radio 2
+6848	BBC Radio 3
+6912	BBC Radio 4
+7168	BBC RB 1
+8258	ITV
+8294	ITV3
+8325	ITV2
+8330	ITV4
+8357	ITV +1
+8384	Channel 4
+8385	Film4
+8442	More 4
+8448	E4
+8452	Channel 4+1
+8460	Sewing Quarter
+8500	Channel 5
+8600	Freeview
+12928	5STAR
+12992	5 USA
+13024	Channel 5+1
+13120	QVC
+14384	Blaze
+14388	Blaze+1
+14412	Hochanda
+14416	Box Nation
+14424	Juwelo UK
+14440	QUEST+1
+14448	CBS Reality
+14480	Horror Channel
+14488	TCC
+14498	QUEST
+14532	The Store
+14544	ADULT Xpanded TV
+14576	ADULT Studio 66
+14608	True Entertainment
+14688	Absolute Radio
+14720	Heart
+14752	Capital
+15000	Loveworld
+15016	Sonlife
+15032	Racing UK
+15056	CONNECT 4
+15064	Planet Knowledge
+15072	Asia TV
+15200	ADULT Section
+15232	Television X
+15432	Arise News
+15456	VisionTV
+15464	Sports Channel Network
+15512	ADULT Party
+15856	ITVBe
+15864	ITVBe+1
+15920	ITV4+1
+15952	ITV2 +1
+16016	ITV3+1
+16032	CITV
+16080	5SELECT
+16112	Paramount Network
+16200	Ketchup TV
+16208	Drama
+14784	365 Travel
+15176	696
+15208	695
+25664	4Music
+25792	Yesterday
+25856	5Spike
+25920	Ideal World
+26048	LBC
+26112	Classic FM
+26176	KISS
+26240	heat
+26304	Kerrang!
+26368	Smooth Radio
+26560	Hits Radio
+26624	Magic
+26752	KISSTORY
+27040	KISS FRESH
+27136	Jewellery Maker
+27168	4seven
+27424	POP
+27456	RT
+27520	ADULT smileTV2
+27584	ADULT Section
+27680	Travel Channel
+27744	CBS Action
+27776	CBS Drama
+27872	True Movies
+27904	ADULT Babestn
+28000	Home
+28096	Dave ja vu
+28160	Premier Radio
+28224	TalkingPictures TV
+28256	QVC Style
+28288	QVC Beauty
+28520	698
+22080	Sky News
+22208	Pick
+22226	Challenge
+22272	Dave
+22336	E4+1
+22400	ADULT smileTV3
+22592	talkSPORT
+22624	RNIB Connect
+23040	Food Network
+23072	TJC
+23120	TBN UK
+23216	YourTV
+23280	Kiss Me TV
+23296	Proud Dating
+23712	Really
+23744	Quest Red
+23808	Sony Crime Channel
+24016	movies4men
+24032	Sony Movie Ch
+24384	Create & Craft
+24448	Gems TV
+24500	697
+40960	BBC NEWS HD
+41008	Channel 4+1 HD
+41024	4seven HD
+41040	Al Jazeera Eng HD
+41168	Trans World Radio
+41296	RT HD
+41312	Bollywood HD
+41328	CBS Reality +1
+41344	5USA+1
+41376	Keep It Country
+41392	Vintage TV
+41424	Quest Red+1
+41456	Pick+1
+41472	5Spike+1
+41488	Travelxp
+45056	QVC HD
+45072	QVC Beauty HD
+45104	CBeebies HD
+45120	BBC FOUR HD
+45200	5STAR+1
+45280	More4+1
+45312	Rocks & Co 1
+45328	FreeSports
+45344	Forces TV
+45360	PBS America
+45376	Together
+45392	NOW 80s
