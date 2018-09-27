@@ -3,7 +3,7 @@
 	if($handle)
 	{
 		while (($data = fgetcsv($handle, 3000, ':')) !== FALSE) {
-			print $data[12] . "\t" . $data[0] . "\n";
+			print $data[12] . " " . str_replace(' ', '_', $data[0]) . "\n";
 		}
 		
 	fclose($handle);

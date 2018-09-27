@@ -49,7 +49,7 @@ const char *id = "@(#) $Id: tv_grab_dvb.c 86 2010-10-29 20:27:31Z pmhahn $";
 
 /* FIXME: put these as options */
 #define CHANNELS_CONF "/home/pi/.tzap/channels.conf"
-#define CHANIDENTS    "chanidents"
+#define CHANIDENTS    "/media/nas/git-repos/epgrab/chanidents"
 
 static char *ProgName;
 static char *demux = "/dev/dvb/adapter0/demux0";
@@ -228,7 +228,7 @@ static void parseEventDescription(void *data, enum ER round) {
     assert(evtlen < sizeof(evt));
     memcpy(evt, (char *)&evtdesc->data, evtlen);
     evt[evtlen] = '\0';
-    printf("%s\n", xmlify(evt, evtlen));
+    printf("\"Title\": \"%s\", \n", xmlify(evt, evtlen));
     return;
   }
 
@@ -241,9 +241,13 @@ static void parseEventDescription(void *data, enum ER round) {
     if (*dsc) {
       char *d = xmlify(dsc, dsclen);
       if (d && *d)
-        printf("%s\n", d);
+        printf("\"Description\": \"%s\", \n", d);
     }
   }
+  
+	printf("\"Dummy\": \"Dummy\"\n");
+	printf("},\n{\n");
+  
 } /*}}}*/
 
 /* Parse 0x4E Extended Event Descriptor. {{{ */
@@ -663,9 +667,9 @@ static void parseEIT(void *data, size_t len) {
 
     programme_count++;
 
-    printf("%s\n", get_channelident(HILO(e->service_id)));
-    strftime(date_strbuf, sizeof(date_strbuf), "%Y%m%d%H%M%S %z", localtime(&start_time) );
-    printf("%s ", date_strbuf);
+    printf("\"Channel\": \"%s\", \n", get_channelident(HILO(e->service_id)));
+    strftime(date_strbuf, sizeof(date_strbuf), "%Y-%m-%d %H:%M:%S", localtime(&start_time) ); // %z
+    printf("\"Timestamp\": \"%s\", \n", date_strbuf);
 //    strftime(date_strbuf, sizeof(date_strbuf), "stop=\"%Y%m%d%H%M%S %z\"", localtime(&stop_time));
 //    printf("%s>\n ", date_strbuf);
 
@@ -850,9 +854,17 @@ int main(int argc, char **argv) {
     exit(1);
   }
 
+  printf("[\n{\n");
+  
   readZapInfo();
   readEventTables();
+  
+  printf("\"Dummy\": \"Dummy\"\n");
+  printf("}\n]\n");
+  
   finish_up();
 
+
+  
   return 0;
 } /*}}}*/

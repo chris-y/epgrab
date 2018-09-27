@@ -4,7 +4,7 @@
 #include "tv_grab_dvb.h"
 
 char *lookup(const struct lookup_table *l, int id) {
-//	printf("Looked up %x", id);
+	//printf("Looked up %d", id);
 	while ((l->u.i != id) && (l->u.i != -1))
 		l++;
 	return l->desc;
