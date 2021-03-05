@@ -121,7 +121,7 @@ static int do_options(int arg_count, char **arg_strings) {
   int fd;
 
   while (1) {
-    int c = getopt_long(arg_count, arg_strings, "udscmpnhtz:o:f:i:e:", Long_Options, &Option_Index);
+    int c = getopt_long(arg_count, arg_strings, "udscmpnht:z:o:f:i:e:", Long_Options, &Option_Index);
     if (c == EOF)
       break;
     switch (c) {
