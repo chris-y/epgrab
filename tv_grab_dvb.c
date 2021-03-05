@@ -720,7 +720,7 @@ read_more:
     r = read(STDIN_FILENO, buf+n, sizeof(buf)-n);
     bhead = buf;
     n += r;
-  } while(true);
+  } while(r >= 0);
 } /*}}}*/
 
 /* Setup demuxer or open file as STDIN. {{{ */
