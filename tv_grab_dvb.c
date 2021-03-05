@@ -726,7 +726,7 @@ read_more:
     bhead = buf;
     n += r;
     if(r==0) zerocount++;
-  } while ((r > 0) && (zerocount < maxnodata));
+  } while(true); //while ((r > 0) && (zerocount < maxnodata));
 } /*}}}*/
 
 /* Setup demuxer or open file as STDIN. {{{ */
