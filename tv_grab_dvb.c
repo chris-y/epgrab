@@ -718,6 +718,10 @@ read_more:
       memmove(buf, bhead, n);
     /* fill with fresh data */
     r = read(STDIN_FILENO, buf+n, sizeof(buf)-n);
+    if(r<0) {
+        fprintf(stderr, "read error\n");
+        r = 0;
+    }
     bhead = buf;
     n += r;
   } while(r >= 0);
