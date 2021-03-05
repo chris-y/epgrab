@@ -55,7 +55,6 @@ static char *ProgName;
 static char *demux = "/dev/dvb/adapter0/demux0";
 
 static int timeout  = 10;
-static int maxnodata = 0;
 static int packet_count = 0;
 static int programme_count = 0;
 static int update_count  = 0;
@@ -86,7 +85,6 @@ static void usage() {
       "\t-i file - Read from file/device instead of %s\n"
       "\t-f file - Write output to file instead of stdout\n"
       "\t-t timeout - Stop after timeout seconds of no new data\n"
-      "\t-z zerodata - Stop after zerodata attempts of not getting any data\n"
       "\t-o offset  - time offset in hours from -12 to 12\n"
       "\t-c - Use Channel Identifiers from file 'chanidents'\n"
       "\t     (rather than sidnumber.dvb.guide)\n"
@@ -121,7 +119,7 @@ static int do_options(int arg_count, char **arg_strings) {
   int fd;
 
   while (1) {
-    int c = getopt_long(arg_count, arg_strings, "udscmpnht:z:o:f:i:e:", Long_Options, &Option_Index);
+    int c = getopt_long(arg_count, arg_strings, "udscmpnht:o:f:i:e:", Long_Options, &Option_Index);
     if (c == EOF)
       break;
     switch (c) {
@@ -142,9 +140,6 @@ static int do_options(int arg_count, char **arg_strings) {
           fprintf(stderr, "%s: Invalid timeout value\n", ProgName);
           usage();
         }
-        break;
-       case 'z':
-        maxnodata = atoi(optarg);
         break;
       case 'o':
         time_offset = atoi(optarg);
@@ -691,7 +686,7 @@ static void finish_up() {
 
 /* Read EIT segments from DVB-demuxer or file. {{{ */
 static void readEventTables(void) {
-  int r, n = 0, zerocount = 0;
+  int r, n = 0;
   char buf[1<<12], *bhead = buf;
 
   /* The dvb demultiplexer simply outputs individual whole packets (good),
@@ -725,8 +720,7 @@ read_more:
     r = read(STDIN_FILENO, buf+n, sizeof(buf)-n);
     bhead = buf;
     n += r;
-    if(r==0) zerocount++;
-  } while(true); //while ((r > 0) && (zerocount < maxnodata));
+  } while(true);
 } /*}}}*/
 
 /* Setup demuxer or open file as STDIN. {{{ */
