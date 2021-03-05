@@ -686,7 +686,7 @@ static void finish_up() {
 
 /* Read EIT segments from DVB-demuxer or file. {{{ */
 static void readEventTables(void) {
-  int r, n = 0;
+  int r, n = 0, zerocount = 0;
   char buf[1<<12], *bhead = buf;
 
   /* The dvb demultiplexer simply outputs individual whole packets (good),
@@ -720,7 +720,8 @@ read_more:
     r = read(STDIN_FILENO, buf+n, sizeof(buf)-n);
     bhead = buf;
     n += r;
-  } while (r > 0);
+    if(r==0) zerocount++;
+  } while ((r > 0) && (zerocount > 10));
 } /*}}}*/
 
 /* Setup demuxer or open file as STDIN. {{{ */
